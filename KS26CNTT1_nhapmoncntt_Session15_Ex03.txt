@@ -1,0 +1,26 @@
+Bài 3: Ngăn chặn quá tải lưu trữ khi đồng bộ mã nguồn
+                   Báo cáo phân tích (I/O)
+Khi nhấn Ctrl + S, dữ liệu được lưu vào SSD Local. Phần mềm Cloud Drive phát hiện thay đổi và đồng bộ file lên Cloud. Khi tải lên thành công, file xuất hiện dấu tích xanh. Nếu mất mạng, file vẫn lưu trên máy và chờ đồng bộ lại khi có mạng.
+                Thiết kế Hybrid Workflow
+- Lưu và chạy code trên SSD Local để đảm bảo tốc độ.
+- Dùng Google Drive hoặc OneDrive để đồng bộ mã nguồn và tài liệu quan trọng lên Cloud.
+- Bật Files On-Demand để file ít dùng chỉ nằm trên Cloud, giúp tiết kiệm dung lượng ổ cứng.
+- Cấu trúc thư mục Cloud
+SmartFood/
+├── Code/
+│   ├── src/
+│   ├── package.json
+│   ├── package-lock.json
+│   └── .gitignore
+├── Docs/
+│   └── Bao_cao.docx
+└── Assets/
+    ├── Images/
+    └── Designs/
+
+
+                    Xử lý node_modules
+Không đồng bộ thư mục node_modules vì chứa hàng nghìn file nhỏ, làm chậm quá trình đồng bộ và tốn dung lượng Cloud.
+
+Thêm vào .gitignore:
+node_modules/
